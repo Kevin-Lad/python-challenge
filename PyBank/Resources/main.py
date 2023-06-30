@@ -4,6 +4,9 @@ import csv
 # Path to collect data from the Resources folder
 csvpath = os.path.join('budget_data.csv')
 
+# Specify the file to write to
+output_path = os.path.join("..", "new.txt")
+
 with open(csvpath) as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
@@ -56,3 +59,15 @@ with open(csvpath) as csvfile:
     print(f'Average Change: ${average_change}')
     print(f'Greatest increase in profits: {greatest_increase_month} (${greatest_increase})')
     print(f'Greatest decrease in profits: {greatest_decrease_month} (${greatest_decrease})')
+
+with open(output_path, 'w') as f:
+    f.write('Financial Anlaysis\n')
+    f.write('-----------------------\n')
+    f.write(f'Total Months: {total_months}\n')
+    f.write(f'Total: ${total_profit_losses}\n')
+    f.write(f'Average Change: ${average_change}\n')
+    f.write(f'Greatest increase in profits: {greatest_increase_month} (${greatest_increase})\n')
+    f.write(f'Greatest decrease in profits: {greatest_decrease_month} (${greatest_decrease})\n')
+
+
+   
