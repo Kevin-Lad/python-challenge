@@ -14,14 +14,19 @@ with open(csvpath) as csvfile:
     csv_header = next(csvreader)
     print(f"CSV Header: {csv_header}")
 
+
+
     total_profit_losses = 0
     total_months = 0 
     sum_profit_losses = 0 
+    greatest_increase = 0
+    greatest_increase_month = ""
+    greatest_decrease = 999999999999
+    greatest_decrease_month = ""
 
     for row in csvreader:
         
         profit_losses = int(row[1])
-        #print(profit_losses)
 
         total_profit_losses = total_profit_losses + profit_losses
         total_months = total_months + 1
@@ -30,19 +35,24 @@ with open(csvpath) as csvfile:
             change = profit_losses - last_profit_losses
             sum_profit_losses = sum_profit_losses + change
 
+            if change > greatest_increase:
+                greatest_increase = change
+                greatest_increase_month = row[0]
+
+            if change < greatest_decrease:
+                greatest_decrease = change 
+                greatest_decrease_month = row[0]
+        
+
         last_profit_losses = int(row[1])
        
-
     average_change = (sum_profit_losses / (total_months -1))
-    #print(total_profit_losses)
-    #print(total_months)
-    #print (average_change)
-
+    
     # print output
     print('Financial Anlaysis')
     print('----------------------')
     print(f'Total Months: {total_months}')
     print(f'Total: ${total_profit_losses}')
     print(f'Average Change: ${average_change}')
-    print('Greatest increase in profits: ')
-    print('Greatest decrease in profits: ')
+    print(f'Greatest increase in profits: {greatest_increase_month} (${greatest_increase})')
+    print(f'Greatest decrease in profits: {greatest_decrease_month} (${greatest_decrease})')
