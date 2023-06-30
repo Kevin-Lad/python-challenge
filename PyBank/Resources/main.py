@@ -5,7 +5,7 @@ import csv
 csvpath = os.path.join('budget_data.csv')
 
 # Specify the file to write to
-output_path = os.path.join("..", "new.txt")
+output_path = os.path.join("new.txt")
 
 with open(csvpath) as csvfile:
 
