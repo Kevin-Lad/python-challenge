@@ -2,10 +2,10 @@ import os
 import csv
 
 # Path to collect data from the Resources folder
-csvpath = os.path.join('budget_data.csv')
+csvpath = os.path.join("Resources", "budget_data.csv")
 
 # Specify the file to write to
-output_path = os.path.join("new.txt")
+output_path = os.path.join("Analysis", "new.txt")
 
 with open(csvpath) as csvfile:
 
