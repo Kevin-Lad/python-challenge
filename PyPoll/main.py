@@ -2,10 +2,10 @@ import os
 import csv
 
 # Path to collect data from the Resources folder
-csvpath = os.path.join('election_data.csv')
+csvpath = os.path.join("Resources", "election_data.csv")
 
 # Specify the file to write to
-output_path = os.path.join("new.txt")
+output_path = os.path.join("Analysis", "new.txt")
 
 with open(csvpath) as csvfile:
 
@@ -39,7 +39,7 @@ with open(csvpath) as csvfile:
         raymon_percent = (raymon_votes/total_votes) * 100
 
 
-
+#print output
 print('Election Results')
 print('--------------------')
 print(f'Total Votes: {total_votes}')
@@ -48,6 +48,28 @@ print(f'{charles}: {charles_percent} ({charles_votes})')
 print(f'{diana}: {diana_percent} ({diana_votes})')
 print(f'{raymon}: {raymon_percent} ({raymon_votes})')   
 print('--------------------')
-print('Winner: ')
+if charles_votes > (diana_votes or raymon_votes):
+    print(f'Winner: {charles}')
+elif diana_votes > (charles_votes or raymon_votes):
+    print(f'Winner: {diana}')
+else:
+    print(f'Winner: {raymon}')
 print('--------------------')
 
+#write output to a new text file
+with open(output_path, 'w') as f:
+    f.write('Election Results\n')
+    f.write('-----------------------\n')
+    f.write(f'Total Votes: {total_votes}\n')
+    f.write(f'-----------------------\n')
+    f.write(f'{charles}: {charles_percent} ({charles_votes})\n')
+    f.write(f'{diana}: {diana_percent} ({diana_votes})\n')
+    f.write(f'{raymon}: {raymon_percent} ({raymon_votes})\n')
+    f.write(f'-----------------------\n')
+    if charles_votes > (diana_votes or raymon_votes):
+        f.write(f'Winner: {charles}\n')
+    elif diana_votes > (charles_votes or raymon_votes):
+        f.write(f'Winner: {diana}\n')
+    else:
+        f.write(f'Winner: {raymon}\n')
+    f.write(f'-----------------------\n')
