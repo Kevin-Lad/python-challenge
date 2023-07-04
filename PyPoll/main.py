@@ -65,9 +65,9 @@ with open(output_path, 'w') as f:
     f.write('-----------------------\n')
     f.write(f'Total Votes: {total_votes}\n')
     f.write(f'-----------------------\n')
-    f.write(f'{charles}: {charles_percent} ({charles_votes})\n')
-    f.write(f'{diana}: {diana_percent} ({diana_votes})\n')
-    f.write(f'{raymon}: {raymon_percent} ({raymon_votes})\n')
+    f.write(f'{charles}: {charles_percent_rd}% ({charles_votes})\n')
+    f.write(f'{diana}: {diana_percent_rd}% ({diana_votes})\n')
+    f.write(f'{raymon}: {raymon_percent_rd}% ({raymon_votes})\n')
     f.write(f'-----------------------\n')
     if charles_votes > (diana_votes or raymon_votes):
         f.write(f'Winner: {charles}\n')
