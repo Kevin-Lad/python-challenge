@@ -11,11 +11,11 @@ with open(csvpath) as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
-    print(csvreader)
+    #print(csvreader)
 
     # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+    #print(f"CSV Header: {csv_header}")
 
 
 
@@ -50,16 +50,19 @@ with open(csvpath) as csvfile:
         last_profit_losses = int(row[1])
        
     average_change = (sum_profit_losses / (total_months -1))
+    avg_change = round(average_change, 2)
     
     # print output
     print('Financial Anlaysis')
     print('----------------------')
     print(f'Total Months: {total_months}')
     print(f'Total: ${total_profit_losses}')
-    print(f'Average Change: ${average_change}')
+    print(f'Average Change: ${avg_change}')
     print(f'Greatest increase in profits: {greatest_increase_month} (${greatest_increase})')
     print(f'Greatest decrease in profits: {greatest_decrease_month} (${greatest_decrease})')
 
+
+# write to a text file
 with open(output_path, 'w') as f:
     f.write('Financial Anlaysis\n')
     f.write('-----------------------\n')
