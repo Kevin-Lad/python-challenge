@@ -11,11 +11,11 @@ with open(csvpath) as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
-    print(csvreader)
+    #print(csvreader)
 
     # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+    #print(f"CSV Header: {csv_header}")
 
     charles_votes = 0
     charles = "Charles Casper Stockham"
@@ -35,8 +35,11 @@ with open(csvpath) as csvfile:
         total_votes = charles_votes + diana_votes + raymon_votes
 
         charles_percent = (charles_votes/total_votes) * 100
+        charles_percent_rd = round(charles_percent, 3)
         diana_percent = (diana_votes/total_votes) * 100
+        diana_percent_rd = round(diana_percent, 3)
         raymon_percent = (raymon_votes/total_votes) * 100
+        raymon_percent_rd = round(raymon_percent, 3)
 
 
 #print output
@@ -44,9 +47,9 @@ print('Election Results')
 print('--------------------')
 print(f'Total Votes: {total_votes}')
 print('--------------------')
-print(f'{charles}: {charles_percent} ({charles_votes})')
-print(f'{diana}: {diana_percent} ({diana_votes})')
-print(f'{raymon}: {raymon_percent} ({raymon_votes})')   
+print(f'{charles}: {charles_percent_rd}% ({charles_votes})')
+print(f'{diana}: {diana_percent_rd}% ({diana_votes})')
+print(f'{raymon}: {raymon_percent_rd}% ({raymon_votes})')   
 print('--------------------')
 if charles_votes > (diana_votes or raymon_votes):
     print(f'Winner: {charles}')
