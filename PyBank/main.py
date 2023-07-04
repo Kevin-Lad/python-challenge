@@ -68,7 +68,7 @@ with open(output_path, 'w') as f:
     f.write('-----------------------\n')
     f.write(f'Total Months: {total_months}\n')
     f.write(f'Total: ${total_profit_losses}\n')
-    f.write(f'Average Change: ${average_change}\n')
+    f.write(f'Average Change: ${avg_change}\n')
     f.write(f'Greatest increase in profits: {greatest_increase_month} (${greatest_increase})\n')
     f.write(f'Greatest decrease in profits: {greatest_decrease_month} (${greatest_decrease})\n')
 
