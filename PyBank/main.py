@@ -11,13 +11,9 @@ with open(csvpath) as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
-    #print(csvreader)
-
+  
     # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
-    #print(f"CSV Header: {csv_header}")
-
-
 
     total_profit_losses = 0
     total_months = 0 
@@ -27,6 +23,7 @@ with open(csvpath) as csvfile:
     greatest_decrease = 999999999999
     greatest_decrease_month = ""
 
+    # This for loop is where all the calculations will be done
     for row in csvreader:
         
         profit_losses = int(row[1])
@@ -46,7 +43,6 @@ with open(csvpath) as csvfile:
                 greatest_decrease = change 
                 greatest_decrease_month = row[0]
         
-
         last_profit_losses = int(row[1])
        
     average_change = (sum_profit_losses / (total_months -1))
@@ -60,7 +56,6 @@ with open(csvpath) as csvfile:
     print(f'Average Change: ${avg_change}')
     print(f'Greatest increase in profits: {greatest_increase_month} (${greatest_increase})')
     print(f'Greatest decrease in profits: {greatest_decrease_month} (${greatest_decrease})')
-
 
 # write to a text file
 with open(output_path, 'w') as f:
